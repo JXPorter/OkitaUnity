@@ -7,12 +7,13 @@ public class Scope : MonoBehaviour
 
 		void Start ()
 		{
-				for (int i = 0; i < 10; i ++) {
-						print (i);
-				}
+//				for (int i = 0; i < 10; i ++) {
+//						print (i);
+//				}
 				// i only exists between the { and }
-				Debug.Log (this.MyInt); //class scope version of MyInt
+				Debug.Log (this.MyInt); //the keyword "this" unhides the variable that is living at the class scope, e.g class scope version of MyInt
 				int MyInt = 3;
 				Debug.Log (MyInt);
+
 		}
 }
