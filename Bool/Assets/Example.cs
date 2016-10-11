@@ -22,25 +22,40 @@ public class Example : MonoBehaviour
 		public GameObject B_Cube;
 		void Update ()
 		{
-				/*if (change >= 10) {
-						transform.position = new Vector3 (3f, 0f, 0f);
-				} else if (change <= -10) {
-						transform.position = new Vector3 (-3f, 0f, 0f);
-				} else {
-						transform.position = new Vector3 (0f, 0f, 0f);
-				}*/
+
+		renderer.material.color = Color.red;
+
+		if (change >= 10) 
+		{
+			transform.position = new Vector3 (3f, 0f, 0f);
+		}
+		else if(change <= -10)
+		{
+			transform.position = new Vector3(-3f, 0f, 0f);
+		}
+		else
+		{
+			transform.position = new Vector3(0f,0f,0f);
+		}
+//				if (change >= 10) {
+//						transform.position = new Vector3 (3f, 0f, 0f);
+//				} else if (change <= -10) {
+//						transform.position = new Vector3 (-3f, 0f, 0f);
+//				} else {
+//						transform.position = new Vector3 (0f, 0f, 0f);
+//				}
 				
-				Color col = Color.red;
-				float Ax = A_Cube.transform.position.x;
-				float Ay = A_Cube.transform.position.y;
-				float Bx = B_Cube.transform.position.x;
-				float By = B_Cube.transform.position.y;
-				if (Ax > Bx) {
-						col = Color.black;
-				} else if (Ax <= Bx) {
-						col = Color.blue;
-				}
-				GetComponent<Renderer>().material.color = col;
+//				Color col = Color.red;
+//				float Ax = A_Cube.transform.position.x;
+//				float Ay = A_Cube.transform.position.y;
+//				float Bx = B_Cube.transform.position.x;
+//				float By = B_Cube.transform.position.y;
+//				if (Ax > Bx) {
+//						col = Color.black;
+//				} else if (Ax <= Bx) {
+//						col = Color.blue;
+//				}
+//				GetComponent<Renderer>().material.color = col;
 
 		}
 }
