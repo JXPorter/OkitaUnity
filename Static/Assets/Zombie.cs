@@ -5,7 +5,8 @@ public class Zombie : MonoBehaviour
 {
 	public static int numZombies;
 	public bool die;
-	public GameObject player;
+
+	public GameObject player; 
 	public float speed = 0.01f;
 	//int numZombies; //no longer static
 	// Use this for initialization
@@ -23,8 +24,11 @@ public class Zombie : MonoBehaviour
 
 	void Update()
 	{
-		Vector3 direction = (player.transform.position - transform.position).normalized;
-		float distance = (player.transform.position - transform.position).magnitude;
+//		Vector3 direction = (player.transform.position- transform.position).normalized;
+//		float distance = (player.transform.position - transform.position).magnitude;
+		// optimized way of writing the above code, because we can use the static Vector3 pos variable from the Player class
+		Vector3 direction = (Player.pos - transform.position).normalized;
+		float distance = (Player.pos - transform.position).magnitude;
 		Vector3 move = transform.position + (direction * speed);
 		transform.position = move;
 		if (distance < 1f)
