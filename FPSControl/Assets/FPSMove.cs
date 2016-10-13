@@ -22,6 +22,8 @@ public class FPSMove : MonoBehaviour
 		if (Input.GetKey (KeyCode.A))
 		{
 			transform.position -= transform.right * speed;
+			// NOTE: can also use Vector3.left to mean the same thing as above.
+			//transform.position += Vector3.left * speed;
 		}
 		if (Input.GetKey (KeyCode.D))
 		{
