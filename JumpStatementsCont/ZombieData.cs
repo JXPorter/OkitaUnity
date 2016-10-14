@@ -20,14 +20,13 @@ public class ZombieData : MonoBehaviour
 			Destroy (gameObject);
 		}
 
-//		if (playerController == null) 
-//		{
-//			continue;
-//		}
-//			
-//		if(playerController != null)
-//		{
-//			attackPlayer();
-//		}
+		// - check to see if a gameObject has the Human Data Component  component, if it does add it to an Array List 
+		// called allHumans, and then continue to the next object in the list.
+		HumanData hd = (HumanData)go.GetComponent(typeof(HumanData));
+		if (hd != null) 
+		{
+			allHumans.Add (go);
+			continue;
+		}
 	}
 }
