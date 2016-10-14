@@ -43,8 +43,10 @@ public class Grid2D : MonoBehaviour
 		// The puzzle piece should return to white if we are not touching it. The solution is to set all of the objects to white,
 		// and the colore the current object red.
 
-		for (int _x = 0; _x < Width; _x++) {
-			for (int _y = 0; _y < Height; y++) {
+		for (int _x = 0; _x < Width; _x++)
+		{
+			for (int _y = 0; _y < Height; _y++)
+			{
 				GameObject go = Grid [_x, _y];
 				go.GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
 			}
@@ -52,7 +54,8 @@ public class Grid2D : MonoBehaviour
 
 		// These int values can now be used to pick the PuzzlePiece with Grid[x,y]
 		// Checking to see IndexOutOfRangeException caused by player moving the cursor out of the Grid space area
-		if (x >= 0 && y >= 0 && x < Width && y < Height) {
+		if (x >= 0 && y >= 0 && x < Width && y < Height) 
+		{
 			GameObject go = Grid [x, y];
 			go.GetComponent<Renderer> ().material.SetColor ("_Color", Color.red); // change the selected puzzle piece to red
 		}
