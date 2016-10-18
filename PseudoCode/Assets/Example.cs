@@ -10,12 +10,12 @@ public class Example : MonoBehaviour
 	void Start()
 	{
 		pos = transform.position;
-		Members m = new Members ();
-		m.FirstFunction ();
-		Input.GetKey (KeyCode.A);
-		Input.GetKey (KeyCode.W);
-		Input.GetKey (KeyCode.S);
-		Input.GetKey (KeyCode.D);
+//		Members m = new Members ();
+//		m.FirstFunction ();
+//		Input.GetKey (KeyCode.A);
+//		Input.GetKey (KeyCode.W);
+//		Input.GetKey (KeyCode.S);
+//		Input.GetKey (KeyCode.D);
 	}
 
 	void Update()
@@ -25,7 +25,7 @@ public class Example : MonoBehaviour
 //		bool SKey = Input.GetKey (KeyCode.S);
 //		bool DKey = Input.GetKey (KeyCode.D);
 //
-//		if (AKey) 
+//		if (AKey) // 1st way of moving the cube.
 //		{
 //			pos.x = pos.x - speed;
 //			Debug.Log ("AKey");
@@ -46,15 +46,16 @@ public class Example : MonoBehaviour
 //			//Debug.Log ("DKey");
 //			print ("DKey");
 //		}
-		transform.position += Movement(speed);
+//		transform.position = pos; 
+		transform.position += Movement(speed); // this uses my Movement function to change the position of whatever GameObject this script is attached to.
 	}
 
-	Vector3 Movement(float dist)
+	Vector3 Movement(float dist)  //2nd way of moving the cube with a custom function that returns a Vector3 and takes a float as a parameter.  
 	{
-		Vector3 vec = Vector3.zero;
-		if (Input.GetKey(KeyCode.A))
+		Vector3 vec = Vector3.zero;      // vec is set to (0,0,0).
+		if (Input.GetKey(KeyCode.A))     // If Input is getting the A Key
 		{
-			vec.x -= dist;
+			vec.x -= dist;               // then set the x position of the Vector 3 to be iterated by the dist float.
 		}
 		if(Input.GetKey(KeyCode.W))
 		{
@@ -68,7 +69,7 @@ public class Example : MonoBehaviour
 		{
 			vec.x += dist;
 		}
-		return vec;
+		return vec;     // returns a Vector3 called vec
 	}
 }
 
