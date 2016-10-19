@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		mState = MonsterState.standing;
+		//mState = MonsterState.standing;
 	}
 	
 	// Update is called once per frame
