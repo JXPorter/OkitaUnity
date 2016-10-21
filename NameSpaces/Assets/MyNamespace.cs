@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using System;
+
 namespace MyNameSpace
 {
-	public class MyClass
+	public class MyClass : MonoBehaviour
 	{
 		public void MyFunction()
 		{
-			Debug.Log("hello from MyNamespace");
+			print("hello from MyNamespace");
 		}
 	}
 }
