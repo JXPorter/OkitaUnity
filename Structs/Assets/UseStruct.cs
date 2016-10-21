@@ -1,5 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+public class UseStruct : MonoBehaviour
+{
+	BoxParameters ThatBox;
+	// uses globally accessible BoxParameters struct
+
+	void Start()
+	{
+		
+	}
+
+	void Update()
+	{
+		ThatBox = GameObject.Find ("Cube").GetComponent<Struct> ().myParameters;
+		gameObject.transform.position = new Vector3 (0, ThatBox.height*0.5f, -10);
+	}
+}
 
 //// Original Code
 //public class UseStruct : MonoBehaviour

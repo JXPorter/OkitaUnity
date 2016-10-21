@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// breaking the encapsulation of the class, by moving the struct outside of the class.
+// this changes the BoxParameters into a globally accessible struct.
+// I made this struct even more cleanly globally accessible by placing it in its own utility file called Global.cs
+//public struct BoxParameters
+//{
+//	public float width;
+//	public float height;
+//	public float depth;
+//	public Color color;
+//}
 public class Struct : MonoBehaviour
 {
-	struct BoxParematers
-	{
-		public float width;
-		public float height;
-		public float depth;
-		public Color color;
-	}
 	// put the new Struct to use and name it myParameters
-	BoxParameters myParameters;
+	public BoxParameters myParameters;
 
 	void Start()
 	{
