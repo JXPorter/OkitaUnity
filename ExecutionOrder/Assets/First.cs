@@ -30,7 +30,7 @@ public class First : MonoBehaviour
 	void LateUpdate()
 	{
 		Debug.Log("First LateUpdate");
-		//Destroy(this);
+		Destroy(this);
 	}
 	
 	void OnDisable()

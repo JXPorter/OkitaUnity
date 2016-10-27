@@ -1,27 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class Parent : MonoBehaviour
 {
 	void Start()
 	{
-		ParentFunction();
+		ParentFunction ();	
 	}
-	
+
 	public void ParentFunction()
 	{
-		print("parent says hello");
-		FunctionA();
-		FunctionB();
+		print ("parent says hello!");
+		FunctionA ();
+		FunctionB ();
 	}
-	
+
 	public virtual void FunctionA()
 	{
-		print("function A says hello");
+		print ("function A says hello!");
 	}
-	
+
 	public void FunctionB()
 	{
-		print("function B says hello");
+		print ("function B says hello!");
 	}
 }
+
+//// Original Code
+//public class Parent : MonoBehaviour
+//{
+//	void Start()
+//	{
+//		ParentFunction();
+//	}
+//	
+//	public void ParentFunction()
+//	{
+//		print("parent says hello");
+//		FunctionA();
+//		FunctionB();
+//	}
+//	
+//	public virtual void FunctionA()
+//	{
+//		print("function A says hello");
+//	}
+//	
+//	public void FunctionB()
+//	{
+//		print("function B says hello");
+//	}
+//}
