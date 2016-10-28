@@ -10,6 +10,9 @@ public class TypeCasting : MonoBehaviour
 
 	class Person : Humanoid
 	{
+		// USER DEFINED TYPE CONVERSION - we create a new function in Person, so we can convert it into a Zombie.
+		// the keywords implicit and operator allow us to use the Zombie cast when working with a Person type object
+		// Now we can check what the hitpoints of a Person is if it was to be treated as a Zombie type object.
 		static public implicit operator Zombie(Person p)
 		{
 			Zombie z = new Zombie();
