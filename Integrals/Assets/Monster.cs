@@ -56,18 +56,20 @@ public class Monster : MonoBehaviour
 		{
 			print("attacking monster is attacking."); 
 		}
-//		Gizmos.DrawLine(transform.position, new Vector3(0, 0, 0));
+//     	Gizmos.DrawLine(transform.position, new Vector3(0, 0, 0));
 		Vector3 MyVector = PlayerObject.transform.position - transform.position;
-//		float DistanceToPlayer = MyVector.magnitude;
+		float DistanceToPlayer = MyVector.magnitude;
 //		float DistanceToPlayer = (PlayerObject.transform.position - transform.position).magnitude;
-		
+
+		Direction = Vector3.Normalize (PlayerObject.transform.position - transform.position); // keep Direction defined so that it can be used by OnGizmos to DrawLine
 		if ((PlayerObject.transform.position - transform.position).magnitude > AttackRange)
 		{
 //			Direction =
 //				Vector3.Normalize(PlayerObject.transform.position - 
 //				transform.position);
-			transform.position += Vector3.Normalize(PlayerObject.transform.position - 
-				transform.position) * SpeedMultiplyer;
+     		transform.position += Direction * SpeedMultiplyer;
+//			transform.position += Vector3.Normalize(PlayerObject.transform.position - 
+//				transform.position) * SpeedMultiplyer;
 		}
 	}
 
