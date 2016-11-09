@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+
+// C# interfaces can be customized for any suited purpose.
+// 
 public class DistanceComparer : IComparer
 {
 	public GameObject Target;

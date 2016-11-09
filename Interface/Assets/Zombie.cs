@@ -41,7 +41,8 @@ public class Zombie : MonoBehaviour, IThing, IDamage
 		}
 	}
 	
-	public void SayHello()
+	public void SayHello() // since our Zombie.cs also implements IThing interface, add the public SayHello(). But this greeting will be different from the Toaster's
+	// We maintain consistency by having different classes have the same function identifiers but with differing operations within the function.
 	{
 		print("brains");
 	}
