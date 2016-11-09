@@ -5,7 +5,7 @@ using System;
 
 public class Directives : MonoBehaviour
 {
-	#region IMPORTANTFUNC
+	#region IMPORTANTFUNC  // #region NAME is a directive that helps to organize and fold code
 	void ImportantFunc()
 	{
 		int j = 10;
@@ -31,7 +31,7 @@ public class Directives : MonoBehaviour
 	{
 		int playerHealth = 100;
 #if TESTING
-#warning DEBUG is on
+#warning DEBUG is ON
 		playerHealth = 100000;
 #elif UNITY_EDITOR
 		playerHealth = 100000;
