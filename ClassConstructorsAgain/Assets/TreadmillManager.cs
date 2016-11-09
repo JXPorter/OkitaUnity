@@ -39,7 +39,8 @@ public class TreadmillManager : MonoBehaviour
 		public void DrawObstacle()
 		{
 			Vector3 pos = obstacle.transform.position;
-			pos.z = (zposition + myZposition) % 10f;  // pos.z uses the static zposition and the private myZposition, which means that each object can have a unique zposition from all others.
+			pos.z = (zposition + myZposition) % 10f;  // pos.z uses the static zposition and the private myZposition (set to a Random.Range(-10f,10f) and then takes the modulo 10f of this sum.
+			//which means that each object can have a unique zposition from all others.
 			obstacle.transform.position = pos;
 		}
 	}
@@ -56,20 +57,21 @@ public class TreadmillManager : MonoBehaviour
 		for(int i = 0; i < ObstacleCount; i++)
 		{
 			obstacles [i] = new Obstacle (PrimitiveType.Sphere, Obstacle.MovementType.Static);
-			// fills in the array with new obstacles, choose a different primitive
+			// fills in the array with new obstacles, can choose a different primitive
 			treadMillUpdates += new UpdateObstacles(obstacles[i].DrawObstacle); // by using += we stack the obstacles[i].DrawObstacle function into the treadMillUpdates delegate function.
 			// At the end of the for loop, the treadMillUpdates() becomes a single function that calls a stack of other functions.
 			// To use the delegate it's added to the Update() loop as a single statement.
 			// assign each object's update to the delegate here
-			// This code above allows us to use a single delegate function to call many other functions rather than using a for loop to iterate through an array.
+			// This code above allows us to use a single delegate function to call many other functions rather than using a for loop to iterate through each object's function in an array.
 		}
 	}
 
 	void Update()
 	{
-		// Once all of the object functions have been assigned to the delegate, you need to only use one line to update all of the objects. Obstacle.UpdatePosition() changes the
+		// Obstacle.UpdatePosition() changes the
 		// zposition  for all of the objects, and now treadMillUpdates() sets the position to the updated data.
-		Obstacle.UpdatePosition(-0.1f);
+		Obstacle.UpdatePosition(-0.01f);
+		// Once all of the object functions have been assigned to the delegate, you need to only use one line to update all of the objects.
 		treadMillUpdates ();
 //		// this foreach loop is replaced by the delegate function called treadMillUpdates().
 //		foreach(Obstacle o in obstacles)
