@@ -9,8 +9,9 @@ public class Generics : MonoBehaviour
 		zombie firstZombie = new zombie("stubbs");
 		zombie secondZombie = new zombie("jackson");
 		zombie thirdZombie = new zombie("bob");
-		var SomeThings =
-			new ThreeThings<zombie>(firstZombie, secondZombie, thirdZombie);
+		// var keyword is very open keyword - It tells the computer to expect any data type and it means to implicitly get a type once it's been assigned.
+		// Only after the actual object is crated and assigned to the identifier that was created with var will the identifier turn into a type.
+		var SomeThings = new ThreeThings<zombie>(firstZombie, secondZombie, thirdZombie); 
 		Debug.Log(SomeThings);
 		var whatAmI = 1;
 		Debug.Log(whatAmI.GetType());
@@ -107,27 +108,47 @@ public class Generics : MonoBehaviour
 			return Name;
 		}
 	}
-	
-	public class ThreeThings<T>
+
+	public class ThreeThings<T>  // we create a new class called ThreeThings that can hold 3 types of anything (ints, floats, gameObjects, strings, object[], etc)
 	{
 		private T first;
 		private T second;
 		private T third;
-		
+
 		//constructor for three things
-		public ThreeThings(T a, T b, T c)
+		public ThreeThings (T a, T b, T c)
 		{
 			first = a;
 			second = b;
 			third = c;
 		}
-		
-		//override ToString()
-		public override string ToString()
+		// override ToString()
+		public override string ToString ()
 		{
 			return first + " " + second + " " + third;
 		}
 	}
+
+//	public class ThreeThings<T>
+//	{
+//		private T first;
+//		private T second;
+//		private T third;
+//		
+//		//constructor for three things
+//		public ThreeThings(T a, T b, T c)
+//		{
+//			first = a;
+//			second = b;
+//			third = c;
+//		}
+//		
+//		//override ToString()
+//		public override string ToString()
+//		{
+//			return first + " " + second + " " + third;
+//		}
+//	}
 	public int tellMeLies(float f)
 	{
 		return (int)f;
