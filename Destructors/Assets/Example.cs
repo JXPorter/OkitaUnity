@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
+using System;                        // must add the using System directive to access GarbageCollection functions.
 public class Example : MonoBehaviour
 {
 	DestroyMe dm;
@@ -32,8 +32,8 @@ public class Example : MonoBehaviour
 			{
 				//updateEvent -= dm.OnUpdate;
 				dm = null;
-				updateEvent = null;
-				GC.Collect();
+				updateEvent = null;                  // the OnUpdate() will stop being called after 10 counts
+				GC.Collect();			// we force the Garbage Collector to collect unreferenced classes, so we can ensure that the object dm is cleaned out
 			}
 		}
 		
@@ -45,7 +45,7 @@ public class Example : MonoBehaviour
 				if (d.name == "berney")
 				{
 					DestroyList.Remove(DestroyList [i]);
-					GC.Collect();
+					GC.Collect();                     
 				}
 			}
 			d.OnUpdate();

@@ -17,7 +17,8 @@ public class DestroyMe
 		Debug.Log(name + " is updating.");
 	}
 	
-	~DestroyMe()
+	~DestroyMe()                            // the destructor can be identified by the ~ preceding the class identifier.
+											// Destructors are called anytime that the object is garbage collected
 	{
 		Debug.Log(name + " says goodbye.");
 	}	
