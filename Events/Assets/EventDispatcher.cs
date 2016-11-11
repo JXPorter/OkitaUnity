@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;                      // The EventArgs type is located in System, so we need to add the using System directive. EventArgs are used to pass parameters to anyone
+using System;       
+
+// The EventArgs type is located in System, so we need to add the using System directive. EventArgs are used to pass parameters to anyone
 								   // listening to the event.
-//
 //// EVENTS - Any number of EventListeners can be added to the scene. 
 //// Any number of functions can be added to the event OnEvent in the EventDispatcher class
 ////public delegate void EventHandler();      // first we need a delegate to assign any functions to
@@ -84,56 +85,97 @@ using System;                      // The EventArgs type is located in System, s
 //	}
 //}
 
-
-
-// Original Code
-public delegate void ProperEventHandler(object sender,EventArgs e);
-
+// Cleaned up EventDispatcher Code
+public delegate void ProperEventHandler(object sender, EventArgs e);
 public class EventArgs<T> : EventArgs
 {
 	public EventArgs(T v)
 	{
 		Value = v;
 	}
-
 	public T Value;
 }
 
 public class EventDispatcher : MonoBehaviour
 {
-	
 	public event ProperEventHandler ProperEvent;
-	
-	// Use this for initialization
+
 	void Start()
 	{
+		
 	}
-	
-	// Update is called once per frame
+
 	void Update()
 	{
-		GameObject[] Lights =
-			GameObject.FindGameObjectsWithTag("Lights") as GameObject[];
-		foreach (GameObject l in Lights)
+		GameObject[] Lights = GameObject.FindGameObjectsWithTag ("Lights") as GameObject[];
+		foreach(GameObject l in Lights)
 		{
-			Vector3 targetVector =
-				l.transform.position - transform.position;
-			float distanceToTarget =
-				targetVector.magnitude;
-			EventListener el = l.GetComponent<EventListener>();
-			if (distanceToTarget <= 10 && !el.isClose)
+			Vector3 targetVector = l.transform.position - transform.position;
+			float distanceToTarget = targetVector.magnitude;
+			EventListener el = l.GetComponent<EventListener> ();
+			if(distanceToTarget <= 10 && !el.isClose)
 			{
-				ProperEvent(gameObject.transform,
-				            new EventArgs<float>(distanceToTarget));
+				ProperEvent (gameObject.transform, new EventArgs<float> (distanceToTarget));
 				el.isClose = true;
 			}
-			
-			if (distanceToTarget > 10 && el.isClose)
+			if(distanceToTarget > 10 && el.isClose)
 			{
-				ProperEvent(gameObject.transform,
-				            new EventArgs<float>(distanceToTarget));
+				ProperEvent (gameObject.transform, new EventArgs<float> (distanceToTarget));
 				el.isClose = false;
 			}
 		}
 	}
+
 }
+
+//// Original Code
+//public delegate void ProperEventHandler(object sender,EventArgs e);
+//
+//public class EventArgs<T> : EventArgs
+//{
+//	public EventArgs(T v)
+//	{
+//		Value = v;
+//	}
+//
+//	public T Value;
+//}
+//
+//public class EventDispatcher : MonoBehaviour
+//{
+//	
+//	public event ProperEventHandler ProperEvent;
+//	
+//	// Use this for initialization
+//	void Start()
+//	{
+//	}
+//	
+//	// Update is called once per frame
+//	void Update()
+//	{
+//		GameObject[] Lights =
+//			GameObject.FindGameObjectsWithTag("Lights") as GameObject[];
+//		foreach (GameObject l in Lights)
+//		{
+//			Vector3 targetVector =
+//				l.transform.position - transform.position;
+//			float distanceToTarget =
+//				targetVector.magnitude;
+//			EventListener el = l.GetComponent<EventListener>();
+//			if (distanceToTarget <= 10 && !el.isClose)
+//			{
+//				ProperEvent(gameObject.transform,
+//				            new EventArgs<float>(distanceToTarget));
+//				el.isClose = true;
+//			}
+//			
+//			if (distanceToTarget > 10 && el.isClose)
+//			{
+//				ProperEvent(gameObject.transform,
+//				            new EventArgs<float>(distanceToTarget));
+//				el.isClose = false;
+//			}
+//		}
+//	}
+//}

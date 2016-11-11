@@ -56,16 +56,14 @@ using System;
 //	}
 //}
 
-// Original Code
+// Cleaned Up EventListener Code
 public class EventListener : MonoBehaviour
 {
 	public bool isClose;
 
-	// Use this for initialization
 	void Start()
 	{
-		EventDispatcher dispatcher =
-			GameObject.Find("Main Camera").GetComponent<EventDispatcher>();
+		EventDispatcher dispatcher = GameObject.Find ("Main Camera").GetComponent<EventDispatcher> ();
 		dispatcher.ProperEvent += ProximityEvent;
 	}
 
@@ -74,21 +72,55 @@ public class EventListener : MonoBehaviour
 		Transform t = sender as Transform;
 		Vector3 targetVector = t.position - transform.position;
 		float distanceToTarget = targetVector.magnitude;
-
-		if (distanceToTarget > 10)
+		if (distanceToTarget > 10) {
+			gameObject.GetComponent<Light> ().intensity = 0.8f;
+		} else 
 		{
-			gameObject.GetComponent<Light>().intensity = 1.0f;
-		} else
-		{
-			gameObject.GetComponent<Light>().intensity = 3.0f;
+			gameObject.GetComponent<Light> ().intensity = 2.0f;
 		}
-		Debug.Log(distanceToTarget);
+		Debug.Log (distanceToTarget);
 	}
-	
-	void OnDestroy()
-	{
-		EventDispatcher dispatcher =
-			GameObject.Find("Main Camera").GetComponent<EventDispatcher>();
-		dispatcher.ProperEvent -= ProximityEvent;
-	}
+
+//	void OnDestroy()
+//	{
+//		EventDispatcher dispatcher = GameObject.Find ("Main Camera").GetComponent<EventDispatcher> ();
+//		dispatcher.ProperEvent -= ProximityEvent;
+//	}
 }
+
+//// Original Code
+//public class EventListener : MonoBehaviour
+//{
+//	public bool isClose;
+//
+//	// Use this for initialization
+//	void Start()
+//	{
+//		EventDispatcher dispatcher =
+//			GameObject.Find("Main Camera").GetComponent<EventDispatcher>();
+//		dispatcher.ProperEvent += ProximityEvent;
+//	}
+//
+//	public virtual void ProximityEvent(object sender, EventArgs e)
+//	{
+//		Transform t = sender as Transform;
+//		Vector3 targetVector = t.position - transform.position;
+//		float distanceToTarget = targetVector.magnitude;
+//
+//		if (distanceToTarget > 10)
+//		{
+//			gameObject.GetComponent<Light>().intensity = 1.0f;
+//		} else
+//		{
+//			gameObject.GetComponent<Light>().intensity = 3.0f;
+//		}
+//		Debug.Log(distanceToTarget);
+//	}
+//	
+//	void OnDestroy()
+//	{
+//		EventDispatcher dispatcher =
+//			GameObject.Find("Main Camera").GetComponent<EventDispatcher>();
+//		dispatcher.ProperEvent -= ProximityEvent;
+//	}
+//}
